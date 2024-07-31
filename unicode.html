@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <head>
+        <title>Random Unicode Character Generator</title>
+        <style>
+            table, th, tr{
+                border: 5px, solid, black;
+                background-color: dodgerblue;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <h1 id="unicode"></h1>
+                </td>
+            </tr>
+        </table>
+        <button onclick="generate()">Generate</button>
+    <script>
+        async function generate() {
+            let idx = Math.floor(Math.random() * 64032);
+            let hex = '0x' + idx.toString(16);
+            console.log(hex);
+            let character = String.fromCodePoint(hex);
+            let charString = document.getElementById("unicode").innerHTML;
+            document.getElementById("unicode").innerHTML = charString + character;
+            const response = await fetch("");
+            const text = await response.text();
+            var lines = text.split('\n');
+            randomChar = lines[Math.floor(Math.random() * lines.length)];
+            randomChar = randomWiki.replace('\r', '')
+        }
+    </script>
+    </body>
+</html>
